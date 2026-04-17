@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Oxanium } from "next/font/google";
 import "./globals.css";
 import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const oxanium = Oxanium({
+  variable: "--font-oxanium",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${outfit.variable} antialiased bg-background text-foreground font-sans`}>
+      <body className={`${oxanium.variable} antialiased bg-background text-foreground font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <TooltipProvider>
             <SidebarProvider>
