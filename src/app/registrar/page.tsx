@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Check, ChevronsUpDown, Search, Calendar as CalendarIcon, Notebook as NotebookEmoji, Book as BookEmoji } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { supabase } from "@/lib/supabase"
@@ -227,11 +227,9 @@ export default function Registrar() {
               </Label>
               {isMobile ? (
                 <Drawer open={openCat} onOpenChange={setOpenCat}>
-                  <DrawerTrigger asChild>
-                    <Button variant="outline" className="w-full h-14 justify-between px-4 rounded-2xl bg-muted/20 border-border/20 text-[15px] font-semibold hover:bg-muted/40 transition-all">
-                      {selectedParentName || "Seleccionar categoría"}
-                      <ChevronsUpDown className="size-4 opacity-30" />
-                    </Button>
+                  <DrawerTrigger className={cn(buttonVariants({ variant: "outline" }), "w-full h-14 justify-between px-4 rounded-2xl bg-muted/20 border-border/20 text-[15px] font-semibold hover:bg-muted/40 transition-all")}>
+                    {selectedParentName || "Seleccionar categoría"}
+                    <ChevronsUpDown className="size-4 opacity-30" />
                   </DrawerTrigger>
                   <DrawerContent className="rounded-t-[2.5rem] p-2">
                     <DrawerHeader>
@@ -242,11 +240,9 @@ export default function Registrar() {
                 </Drawer>
               ) : (
                 <Popover open={openCat} onOpenChange={setOpenCat}>
-                  <PopoverTrigger asChild>
-                    <Button variant="outline" className="w-full h-14 justify-between px-4 rounded-2xl bg-muted/20 border-border/20 text-[15px] font-semibold hover:bg-muted/40 transition-all">
-                      {selectedParentName || "Seleccionar categoría"}
-                      <ChevronsUpDown className="size-4 opacity-30" />
-                    </Button>
+                  <PopoverTrigger className={cn(buttonVariants({ variant: "outline" }), "w-full h-14 justify-between px-4 rounded-2xl bg-muted/20 border-border/20 text-[15px] font-semibold hover:bg-muted/40 transition-all")}>
+                    {selectedParentName || "Seleccionar categoría"}
+                    <ChevronsUpDown className="size-4 opacity-30" />
                   </PopoverTrigger>
                   <PopoverContent className="p-0 w-[--radix-popover-trigger-width] rounded-2xl overflow-hidden shadow-2xl border-border/20" align="start">
                     <CategorySelector />
@@ -263,11 +259,9 @@ export default function Registrar() {
                 </Label>
                 {isMobile ? (
                   <Drawer open={openSub} onOpenChange={setOpenSub}>
-                    <DrawerTrigger asChild>
-                      <Button variant="outline" className="w-full h-14 justify-between px-4 rounded-2xl bg-indigo-500/5 border-indigo-500/10 text-[15px] font-semibold hover:bg-indigo-500/10 transition-all">
-                        {selectedSubName || "Escoger..."}
-                        <ChevronsUpDown className="size-4 opacity-30" />
-                      </Button>
+                    <DrawerTrigger className={cn(buttonVariants({ variant: "outline" }), "w-full h-14 justify-between px-4 rounded-2xl bg-indigo-500/5 border-indigo-500/10 text-[15px] font-semibold hover:bg-indigo-500/10 transition-all")}>
+                      {selectedSubName || "Escoger..."}
+                      <ChevronsUpDown className="size-4 opacity-30" />
                     </DrawerTrigger>
                     <DrawerContent className="rounded-t-[2.5rem] p-2">
                       <DrawerHeader>
@@ -278,11 +272,9 @@ export default function Registrar() {
                   </Drawer>
                 ) : (
                   <Popover open={openSub} onOpenChange={setOpenSub}>
-                    <PopoverTrigger asChild>
-                      <Button variant="outline" className="w-full h-14 justify-between px-4 rounded-2xl bg-indigo-500/5 border-indigo-500/10 text-[15px] font-semibold hover:bg-indigo-500/10 transition-all">
-                        {selectedSubName || "Escoger..."}
-                        <ChevronsUpDown className="size-4 opacity-30" />
-                      </Button>
+                    <PopoverTrigger className={cn(buttonVariants({ variant: "outline" }), "w-full h-14 justify-between px-4 rounded-2xl bg-indigo-500/5 border-indigo-500/10 text-[15px] font-semibold hover:bg-indigo-500/10 transition-all")}>
+                      {selectedSubName || "Escoger..."}
+                      <ChevronsUpDown className="size-4 opacity-30" />
                     </PopoverTrigger>
                     <PopoverContent className="p-0 w-[--radix-popover-trigger-width] rounded-2xl overflow-hidden shadow-2xl border-border/20" align="start">
                       <SubcategorySelector />
@@ -298,17 +290,15 @@ export default function Registrar() {
             <div className="space-y-2">
               <Label className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.2em] px-1">Fecha</Label>
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className={cn(
-                      "w-full h-14 justify-start text-left font-semibold rounded-2xl bg-muted/20 border-border/20",
-                      !selectedDate && "text-muted-foreground"
-                    )}
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4 opacity-50" />
-                    {selectedDate ? format(selectedDate, "PPP", { locale: es }) : <span>Seleccionar fecha</span>}
-                  </Button>
+                <PopoverTrigger 
+                  className={cn(
+                    buttonVariants({ variant: "outline" }),
+                    "w-full h-14 justify-start text-left font-semibold rounded-2xl bg-muted/20 border-border/20",
+                    !selectedDate && "text-muted-foreground"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4 opacity-50" />
+                  {selectedDate ? format(selectedDate, "PPP", { locale: es }) : <span>Seleccionar fecha</span>}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0 rounded-2xl shadow-2xl border-border/20" align="start">
                   <Calendar
