@@ -12,8 +12,7 @@ import { es } from "date-fns/locale"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { 
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
-  defs, linearGradient, stop 
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
 } from "recharts"
 
 export default function Dashboard() {
