@@ -175,7 +175,7 @@ export default function Registrar() {
 
   return (
     <div className="max-w-xl mx-auto space-y-6 animate-in fade-in duration-500 pb-20 md:pb-8">
-      <div className="flex flex-col gap-1 px-4">
+      <div className="hidden md:flex flex-col gap-1 px-4">
         <h1 className="text-3xl font-black tracking-tighter flex items-center gap-2 text-foreground">
           {type === 'expense' ? 'Gasto' : 'Ingreso'}
           <span className="text-xs font-bold bg-muted px-2 py-0.5 rounded-full uppercase tracking-widest text-muted-foreground align-middle">Nuevo</span>

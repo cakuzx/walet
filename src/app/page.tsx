@@ -120,14 +120,30 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-10 animate-in fade-in duration-1000 pb-20 px-1">
-      {/* Saludo */}
-      <div className="flex flex-col gap-1">
+      {/* Saludo - Solo Escritorio */}
+      <div className="hidden md:flex flex-col gap-1">
         <h1 className="text-4xl font-black tracking-tight text-foreground">
           ¡Hola, Usuario! 👋
         </h1>
         <p className="text-muted-foreground font-medium text-sm">
           Tienes un {data.totalBalance >= 0 ? 'excedente' : 'déficit'} de S/ {Math.abs(data.totalBalance).toLocaleString()} en tu patrimonio global.
         </p>
+      </div>
+
+      {/* Botones de Acción Rápida - Solo Móvil */}
+      <div className="flex md:hidden gap-3">
+        <Link href="/registrar" className="flex-1">
+          <button className="w-full py-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex flex-col items-center justify-center gap-1 active:scale-95 transition-all">
+            <TrendingUp className="size-5 text-indigo-400" />
+            <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Ingreso</span>
+          </button>
+        </Link>
+        <Link href="/registrar" className="flex-1">
+          <button className="w-full py-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex flex-col items-center justify-center gap-1 active:scale-95 transition-all">
+            <TrendingDown className="size-5 text-rose-400" />
+            <span className="text-[10px] font-black uppercase tracking-widest text-rose-400">Gasto</span>
+          </button>
+        </Link>
       </div>
 
       {/* KPI Cards */}
