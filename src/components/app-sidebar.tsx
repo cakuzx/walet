@@ -69,6 +69,8 @@ const data = {
   ],
 }
 
+import { ModeToggle } from "@/components/mode-toggle"
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname()
 
@@ -77,14 +79,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader className="h-16 flex items-center px-6 border-b border-border/40">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" render={<Link href="/" />}>
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-lg shadow-primary/20">
-                <Wallet className="size-5" />
-              </div>
-              <div className="grid flex-1 text-left text-sm leading-tight ml-2">
-                <span className="truncate font-semibold text-lg tracking-tight">Walet</span>
-                <span className="truncate text-xs text-muted-foreground">Finanzas & Hábitos</span>
-              </div>
+            <SidebarMenuButton size="lg" asChild>
+              <Link href="/">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-lg shadow-primary/20">
+                  <Wallet className="size-5" />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight ml-2">
+                  <span className="truncate font-semibold text-lg tracking-tight">Walet</span>
+                  <span className="truncate text-xs text-muted-foreground">Finanzas & Hábitos</span>
+                </div>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -99,7 +103,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               {data.navMain.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
-                    render={<Link href={item.url} />}
+                    asChild
                     tooltip={item.title}
                     isActive={pathname === item.url}
                     className={`
@@ -109,9 +113,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"}
                     `}
                   >
-                    <item.icon className={`size-5 ${pathname === item.url ? "text-primary" : ""}`} />
-                    <span className="text-sm">{item.title}</span>
-                    {pathname === item.url && <ChevronRight className="ml-auto size-4 opacity-50" />}
+                    <Link href={item.url}>
+                      <item.icon className={`size-5 ${pathname === item.url ? "text-primary" : ""}`} />
+                      <span className="text-sm">{item.title}</span>
+                      {pathname === item.url && <ChevronRight className="ml-auto size-4 opacity-50" />}
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -119,8 +125,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="border-t border-border/40 p-4">
+      <SidebarFooter className="border-t border-border/40 p-4 space-y-2">
         <SidebarMenu>
+          <SidebarMenuItem>
+            <ModeToggle />
+          </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" className="hover:bg-muted/50 rounded-xl px-4">
               <div className="flex aspect-square size-8 items-center justify-center rounded-full bg-muted">
